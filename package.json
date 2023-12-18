@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd backend && node server.js",
+    "build": "cd frontend && node server.js",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "nodemon server.js",
     "frontend": "cd frontend && npm run dev"
