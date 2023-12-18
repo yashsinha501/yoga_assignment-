@@ -47,31 +47,31 @@ const getAllRegistrations = async (req, res) => {
 };
 
 const editBatch = async (req, res) => {
-    try {
-      const { batch } = req.body;
-      const { id } = req.params;
-      // Find the participant by ID
-      const participant = await Participant.findById(id);
-      
-      if (!participant) {
-          return res.status(404).json({ message: 'Participant not found' });
-        }
-        
-        // Parse the startDate string into a moment object
-        const startDateMoment = moment(participant.startDate);
-        
-        console.log(participant);
-      // Check if the current month is different from the startDate month
-      if (moment().format('YYYY-MM') !== startDateMoment.format('YYYY-MM')) {
-        // Update the participant's batch
-        await Participant.findByIdAndUpdate(id, { $set: { batch } });
-        return res.status(200).json({ message: 'Batch updated successfully' });
-      } else {
-        return res.status(400).json({ message: 'Cannot change batch within the same month' });
+  try {
+    const { batch } = req.body;
+    const { _id } = req.params;
+    // Find the participant by ID
+    console.log(_id,batch);
+    const participant = await Participant.findById(_id);
+    if (!participant) {
+        return res.status(404).json({ message: 'Participant not found' });
       }
-    } catch (error) {
-      res.status(500).json({ message: 'Internal Server Error' });
+      
+      // Parse the startDate string into a moment object
+      const startDateMoment = moment(participant.startDate);
+      
+      console.log(participant);
+    // Check if the current month is different from the startDate month
+    if (moment().format('YYYY-MM') !== startDateMoment.format('YYYY-MM')) {
+      // Update the participant's batch
+      await Participant.findByIdAndUpdate(_id, { $set: { batch } });
+      return res.status(200).json({ message: 'Batch updated successfully' });
+    } else {
+      return res.status(400).json({ message: 'Cannot change batch within the same month' });
     }
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
 
 const deleteParticipant = async (req, res) => {
