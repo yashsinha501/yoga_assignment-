@@ -20,18 +20,6 @@ function Payment() {
     }));
   };
 
-//   const handleSubmit = (e) => {
-//     console.log('Checking if handleSubmit is triggered...');
-//     e.preventDefault();
-  
-//     try {
-//       // Handle form submission logic here
-//       console.log('Form data submitted:', cardData);
-//     } catch (error) {
-//       console.error('Error in handleSubmit:', error);
-//     }  
-// };
-
 const navigate = useNavigate()
 
 const handleSubmit = (e) => {
@@ -43,21 +31,12 @@ const handleSubmit = (e) => {
     console.log('Form data submitted:', cardData);
 
     // Programmatically navigate to "/MembersList"
-    navigate('/MembersList');
+    navigate('/',{ state: { paymentSuccess: true } });
   } catch (error) {
     console.error('Error in handleSubmit:', error);
   }
 };
 
-  // const [cardNumber, setCardNumber] = useState('');
-  // const [expiryDate, setExpiryDate] = useState('');
-  // const [cvv, setCvv] = useState('');
-
-  // const handlePaymentSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Add your payment processing logic here
-  //   console.log('Payment submitted:', cardData);
-  // };
 
   return (
   <>
@@ -113,7 +92,7 @@ const handleSubmit = (e) => {
               />
             </div>
             <div className="inputContainer text-info pb-3">
-              <button type='submit' className="text-info bg-dark border-info p-2 rounded">Submit</button>
+              <button type='submit' onClick={handleSubmit} className="text-info bg-dark border-info p-2 rounded">Submit</button>
             </div>
           </form>
       </div>

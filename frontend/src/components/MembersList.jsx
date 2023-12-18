@@ -1,10 +1,23 @@
-// src/components/Contact.jsx
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios'
+
 
 function MembersList() {
+
+  const[lists,setLists] = useState([])
+
+  const fetchList = async()=>{
+    const list = await axios.get('http://localhost:5000/api/registrations');
+    setLists(list.data);
+  }
+
+  useEffect(()=>{
+    fetchList()
+  },[])
+
   return (
     <>
-      <div>
+      {/* <div>
         <table className="table">
           <thead>
             <tr>
@@ -38,7 +51,30 @@ function MembersList() {
             </tr>
           </tbody>  
         </table>
-      </div>
+      </div> */}
+          <div>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">S.No</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Age</th>
+                  <th scope="col">Month</th>
+                  <th scope="col">Batch</th>
+                </tr>
+              </thead>
+              <tbody>
+              {lists.map((list,index) => (
+                <tr key={index+1} >
+                  <th scope="row">{index+1}</th>
+                  <td>{list.name}</td>
+                  <td>{list.age}</td>
+                  <td>{list.startDate}</td>
+                  <td>{list.batch}</td>
+                </tr> ))}
+              </tbody>  
+            </table>
+          </div>
     </>
   );
 }

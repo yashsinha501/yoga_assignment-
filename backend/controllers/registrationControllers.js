@@ -1,11 +1,16 @@
 // controllers/registrationController.js
 const Participant = require('../models/registrationModels');
+const Payment = require('../models/paymentModels')
 const moment = require('moment');
 
 
 const registerUser = async (req, res) => {
   try {
     const { name, age, startDate, batch } = req.body;
+
+    if(age<"18" || age>"65"){
+      return res.status(400).json({ message:'People Below 18 or above 65 are not allowed' });
+    }
 
     const parsedStartDate = moment(startDate, 'DD/MM/YYYY', true);
     if (!parsedStartDate.isValid()) {
