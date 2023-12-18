@@ -4,7 +4,7 @@ const participantSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: { type: Number, required: true, min:18, max:65 },
   startDate: { type: Date, required: true },
-  batch: { type: String, default: Date.now },
+  batch: { type: String, default: Date.now, required: true },
   fee: {type:Boolean, default: false}
 });
 

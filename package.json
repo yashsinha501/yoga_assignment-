@@ -1,5 +1,13 @@
 {
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev"
+  },
   "dependencies": {
     "react-router-dom": "^6.21.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
