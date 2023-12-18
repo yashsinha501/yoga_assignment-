@@ -9,7 +9,7 @@
     "server": "nodemon server.js",
     "client": "cd frontend && npm run start",
     "build": "cd frontend && npm run build",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "author": "yash",
   "license": "ISC",
