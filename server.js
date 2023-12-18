@@ -14,10 +14,10 @@ app.use(cors())
 
 app.use('/api',registerRoutes)
 
-app.use(express.static(path.join(__dirname, '../frontend/dist')))
+app.use(express.static(path.join(__dirname, './frontend/dist')))
 
 app.get('*', function(req,res){
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"))
+  res.sendFile(path.join(__dirname, "./frontend/dist/index.html"))
 });
 
 app.listen(PORT, () => {
