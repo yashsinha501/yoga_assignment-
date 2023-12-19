@@ -38,3 +38,11 @@ npm run dev
 * http://127.0.0.1:5173/payment => Payment page having all the card fields
 
 * http://127.0.0.1:5173/MembersList => A form having list of all the registered students and updation form for any updation in batch if the previous change was a month ago
+
+## ER Diagram Link 
+
+```bash
+ https://lucid.app/lucidchart/bc82d518-1db9-4258-a48d-4a2e328139bb/edit?viewport_loc=-1090%2C-1993%2C3203%2C1453%2C0_0&invitationId=inv_7f15c44a-f9c9-4f20-a59e-6b59d9bff7d6
+
+```
+
